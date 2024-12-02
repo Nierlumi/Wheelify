@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_primary"
+    android:background="?attr/colorPrimaryContainer"
     tools:context=".ui.settings.SettingsFragment">
 
     <LinearLayout
@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
-            app:cardBackgroundColor="@color/purple_secondary"
+            app:cardBackgroundColor="?attr/colorSecondary"
             android:id="@+id/aboutUsCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
 
 
         <androidx.cardview.widget.CardView
-            app:cardBackgroundColor="@color/purple_secondary"
+            app:cardBackgroundColor="?attr/colorSecondary"
             android:id="@+id/themeCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,16 +85,16 @@
                     android:id="@+id/theme_switch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:trackTint="@color/purple_primary"
+                    app:trackTint="@color/white"
                     app:trackTintMode="src_atop"
-                    app:thumbTint="@color/white"
+                    app:thumbTint="?attr/colorPrimary"
                     app:thumbTintMode="src_atop"
                     />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            app:cardBackgroundColor="@color/purple_secondary"
+            app:cardBackgroundColor="?attr/colorSecondary"
             android:id="@+id/contactUsCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

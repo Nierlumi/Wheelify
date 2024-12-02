@@ -10,4 +10,10 @@
 
     <color name="purple_primary">#C7B4E1</color>
     <color name="purple_secondary">#9E65EC</color>
+
+    <color name="gray900">#121212</color>
+    <color name="gray800">#1E1E1E</color>
+    <color name="gray700">#2C2C2C</color>
+    <color name="gray600">#3D3D3D</color>
+    <color name="gray500">#616161</color>
 </resources>

@@ -59,4 +59,5 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.jetbrains.kotlinx.coroutines.android)
+    implementation ("com.google.android.material:material:1.12.0")
 }

@@ -1,9 +1,10 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_primary"
+    android:background="?attr/colorPrimaryContainer"
     tools:context=".MainActivity">
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
@@ -12,61 +13,58 @@
         android:layout_height="wrap_content"
         android:indeterminate="true"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:contentDescription="Preview View"
         android:id="@+id/previewImageView"
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="?actionBarSize"
+        android:layout_marginTop="?attr/actionBarSize"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="35dp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="?attr/colorSurface"
+        app:layout_constraintTop_toBottomOf="@id/progressIndicator"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/galleryButton"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/galleryButton" />
 
     <Button
         android:id="@+id/scanButton"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:background="@drawable/circle_button"
-        android:contentDescription="Scan"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/circle_button"
+        android:contentDescription="@string/title_scan"
         android:drawableTop="@drawable/ic_scan_48dp"
-        app:backgroundTint="@color/purple_secondary"
+        app:backgroundTint="?attr/colorSecondary"
         app:layout_constraintBottom_toTopOf="@id/galleryButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/previewImageView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/galleryButton"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_button"
         android:text="@string/gallery"
         android:textSize="16sp"
         android:fontFamily="@font/poppins_bold"
-        android:background="@drawable/rounded_button"
-        app:backgroundTint="@color/purple_secondary"
-        app:layout_constraintBottom_toTopOf="@id/analyzeButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:backgroundTint="?attr/colorSecondary"
+        app:layout_constraintTop_toBottomOf="@id/previewImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/analyzeButton" />
 
     <Button
         android:id="@+id/analyzeButton"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
@@ -75,9 +73,9 @@
         android:text="@string/analyze"
         android:textSize="16sp"
         android:fontFamily="@font/poppins_bold"
-        app:backgroundTint="@color/purple_secondary"
+        app:backgroundTint="?attr/colorSecondary"
         app:layout_constraintTop_toBottomOf="@id/galleryButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
