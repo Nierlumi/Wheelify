@@ -1,11 +1,13 @@
 package com.example.wheelify.ui.settings
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -23,6 +25,7 @@ class SettingsFragment : Fragment() {
     private lateinit var dataStoreManager: UserPreference
     private var isSwitchBeingSetByObserver = false
 
+    @SuppressLint("QueryPermissionsNeeded")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,7 +45,16 @@ class SettingsFragment : Fragment() {
 
         val contactUsCard: View = binding.contactUsCard
         contactUsCard.setOnClickListener {
-            // Aksi untuk item Contact Us
+            val intent : Intent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_EMAIL, arrayOf("wheelify.id@gmail.com"))
+                putExtra(Intent.EXTRA_SUBJECT, "Customer Service Wheelify")
+            }
+            if (intent.resolveActivity(requireActivity().packageManager) != null) {
+                startActivity(intent)
+            } else {
+                Toast.makeText(requireContext(), "Required App Not Found", Toast.LENGTH_SHORT).show()
+            }
         }
 
         return root
