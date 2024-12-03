@@ -1,5 +1,6 @@
 package com.example.wheelify.ui.settings
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.wheelify.databinding.FragmentSettingsBinding
 import com.example.wheelify.preferences.UserPreference
+import com.example.wheelify.ui.about.AboutActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -35,7 +36,8 @@ class SettingsFragment : Fragment() {
 
         val aboutUsCard: View = binding.aboutUsCard
         aboutUsCard.setOnClickListener {
-            // Logika untuk item About Us
+            val intent : Intent = Intent(requireContext(), AboutActivity::class.java)
+            startActivity(intent)
         }
 
         val contactUsCard: View = binding.contactUsCard
