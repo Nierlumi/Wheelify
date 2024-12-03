@@ -26,7 +26,7 @@ class ScanFragment : Fragment() {
 
         _binding = FragmentScanBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+        
         return root
     }
 

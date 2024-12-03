@@ -1,13 +1,35 @@
 package com.example.wheelify.ui.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.wheelify.data.response.ArticlesItem
+import com.example.wheelify.data.retrofit.ApiConfig
+import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+   private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading : LiveData<Boolean> = _isLoading
+
+    private val _news = MutableLiveData<List<ArticlesItem>>()
+    val news : LiveData<List<ArticlesItem>> = _news
+
+    fun getNews(apiKey: String, country: String, category: String){
+        _isLoading.value = true
+        viewModelScope.launch {
+            try {
+                val response = ApiConfig.getApiService().getNews(apiKey, country, category)
+                _news.value = response.articles
+            } catch (e: Exception){
+                _news.value = emptyList()
+                Log.e("HomeViewModel", "Error: ${e.message}")
+            } finally {
+                _isLoading.value = false
+            }
+        }
+
     }
-    val text: LiveData<String> = _text
 }
