@@ -1,5 +1,6 @@
 package com.example.wheelify.ui.home
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.wheelify.data.response.ArticlesItem
 import com.example.wheelify.databinding.ItemBannerBinding
+import com.example.wheelify.ui.detail.DetailActivity
 import com.example.wheelify.ui.home.ListNewsAdapter.NewsViewHolder
 
 class ListNewsAdapter : ListAdapter<ArticlesItem, NewsViewHolder>(DIFF_CALLBACK) {
@@ -30,6 +32,9 @@ class ListNewsAdapter : ListAdapter<ArticlesItem, NewsViewHolder>(DIFF_CALLBACK)
                 .into(binding.imgItemPhoto)
 
             binding.root.setOnClickListener {
+                val intent = Intent(binding.root.context, DetailActivity::class.java)
+                intent.putExtra("id", news.id)
+                binding.root.context.startActivity(intent)
 
             }
         }

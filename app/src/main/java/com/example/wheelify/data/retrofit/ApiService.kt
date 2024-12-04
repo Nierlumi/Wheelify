@@ -2,6 +2,7 @@ package com.example.wheelify.data.retrofit
 
 import com.example.wheelify.data.response.NewsResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -10,6 +11,11 @@ interface ApiService {
         //@Query("apiKey") apiKey: String,
         @Query("country=us") country: String,
         @Query("category=technology") category: String
+    ): NewsResponse
+
+    @GET("news/{id}")
+    suspend fun getDetailNews(
+        @Path("id") id: Int
     ): NewsResponse
 
 }
