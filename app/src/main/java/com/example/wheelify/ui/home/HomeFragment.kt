@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
         binding.rvBanner.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvListnews.layoutManager = LinearLayoutManager(requireContext())
 
-        homeViewModel.getNews("apiKey", "country", "category")
+        homeViewModel.getNews("country", "category")
 
         homeViewModel.news.observe(viewLifecycleOwner) { news ->
             listNewsAdapter.submitList(news)

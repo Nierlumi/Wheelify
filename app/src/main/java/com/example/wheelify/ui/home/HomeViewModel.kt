@@ -17,12 +17,12 @@ class HomeViewModel : ViewModel() {
     private val _news = MutableLiveData<List<ArticlesItem>>()
     val news : LiveData<List<ArticlesItem>> = _news
 
-    fun getNews(apiKey: String, country: String, category: String){
+    fun getNews(country: String, category: String){
         _isLoading.value = true
         viewModelScope.launch {
             try {
-                val response = ApiConfig.getApiService().getNews(apiKey, country, category)
-                _news.value = response.articles
+                val response = ApiConfig.getApiService().getNews(country, category + "&timestamp=${System.currentTimeMillis()}" )
+                _news.value = response.articles ?: emptyList()
             } catch (e: Exception){
                 _news.value = emptyList()
                 Log.e("HomeViewModel", "Error: ${e.message}")

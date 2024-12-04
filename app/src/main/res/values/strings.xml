@@ -24,4 +24,6 @@
         Jonathan Kaparang\n
         Afan Kristianto
     </string>
+    <string name="recommendation">Here\'s Recommendation For You !</string>
+    <string name="popular">Popular Recommendation</string>
 </resources>
