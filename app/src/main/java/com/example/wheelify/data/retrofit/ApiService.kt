@@ -1,5 +1,6 @@
 package com.example.wheelify.data.retrofit
 
+import com.example.wheelify.data.response.DetailNewsResponse
 import com.example.wheelify.data.response.NewsResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -16,6 +17,6 @@ interface ApiService {
     @GET("news/{id}")
     suspend fun getDetailNews(
         @Path("id") id: Int
-    ): NewsResponse
+    ): DetailNewsResponse
 
 }

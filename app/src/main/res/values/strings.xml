@@ -26,4 +26,5 @@
     </string>
     <string name="recommendation">Here\'s Recommendation For You !</string>
     <string name="popular">Popular Recommendation</string>
+    <string name="source_news">Source News</string>
 </resources>

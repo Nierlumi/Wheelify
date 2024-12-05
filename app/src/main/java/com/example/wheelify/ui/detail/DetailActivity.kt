@@ -1,5 +1,6 @@
 package com.example.wheelify.ui.detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -25,13 +26,22 @@ class DetailActivity : AppCompatActivity() {
         }
         detailViewModel.news.observe(this) { news ->
             if (news != null) {
-                binding.tvItemNameDetail.text = news.title
-                binding.tvDescription.text = news.description
+                binding.tvItemNameDetail.text = news.article?.title
+                binding.tvDescription.text = news.article?.description
                 Glide.with(this)
-                    .load(news.image)
+                    .load(news.article?.image)
                     .into(binding.imgItemPhoto)
+
+                binding.btnSource.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = android.net.Uri.parse(news.article?.url)
+                    startActivity(intent)
+                }
+
 
             }
         }
+
+
     }
 }
