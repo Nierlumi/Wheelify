@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="8dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
     card_view:cardCornerRadius="16dp"
     card_view:cardElevation="4dp">
 
@@ -28,7 +30,9 @@
             android:id="@+id/tv_item_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:layout_marginBottom="10dp"

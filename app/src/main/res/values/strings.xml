@@ -24,7 +24,10 @@
         Jonathan Kaparang\n
         Afan Kristianto
     </string>
-    <string name="recommendation">Here\'s Recommendation For You !</string>
-    <string name="popular">Popular Recommendation</string>
+    <string name="recommendation">Ini Untukmu !</string>
+    <string name="popular">Rekomendasi Populer</string>
     <string name="source_news">Source News</string>
+    <string name="about">Tentang</string>
+    <string name="date_app">Aplikasi dibuat</string>
+    <string name="date">12/12/2024</string>
 </resources>

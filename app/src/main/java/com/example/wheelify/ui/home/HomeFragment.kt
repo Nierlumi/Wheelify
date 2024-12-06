@@ -16,6 +16,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var listNewsAdapter: ListNewsAdapter
+    private lateinit var popularNewsAdapter: PopularNewsAdapter
 
 
     override fun onCreateView(
@@ -35,7 +36,9 @@ class HomeFragment : Fragment() {
 
         listNewsAdapter = ListNewsAdapter()
         binding.rvBanner.adapter = listNewsAdapter
-        binding.rvListnews.adapter = listNewsAdapter
+
+        popularNewsAdapter = PopularNewsAdapter()
+        binding.rvListnews.adapter = popularNewsAdapter
 
         binding.rvBanner.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvListnews.layoutManager = LinearLayoutManager(requireContext())
@@ -44,6 +47,7 @@ class HomeFragment : Fragment() {
 
         homeViewModel.news.observe(viewLifecycleOwner) { news ->
             listNewsAdapter.submitList(news)
+            popularNewsAdapter.submitList(news)
         }
 
         homeViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
