@@ -24,8 +24,9 @@
         tools:layout_editor_absoluteX="-46dp">
 
         <ImageView
+            android:contentDescription="@string/title_headline"
             android:id="@+id/img_item_photo"
-            android:layout_width="300dp"
+            android:layout_width="400dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
