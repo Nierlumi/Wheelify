@@ -61,4 +61,9 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.jetbrains.kotlinx.coroutines.android)
     implementation ("com.google.android.material:material:1.12.0")
+    implementation ("com.yalantis:ucrop:2.2.0"){
+        exclude(group = "com.android.support")
+    }
+    implementation ("androidx.appcompat:appcompat:1.7.0")
+    implementation ("androidx.constraintlayout:constraintlayout:2.2.0")
 }
