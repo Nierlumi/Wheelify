@@ -32,7 +32,7 @@
         app:layout_constraintBottom_toTopOf="@id/galleryButton" />
 
     <Button
-        android:id="@+id/scanButton"
+        android:id="@+id/cameraxButton"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginBottom="10dp"
