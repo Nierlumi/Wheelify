@@ -1,10 +1,8 @@
 package com.example.wheelify.ui.about
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.wheelify.R
 
 class AboutActivity : AppCompatActivity() {
@@ -12,5 +10,13 @@ class AboutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_about)
+
+        val backButton = findViewById<ImageButton>(R.id.btn_back)
+        backButton.setOnClickListener {
+           onBackPressedDispatcher
+               .onBackPressed()
+        }
+
+
     }
 }

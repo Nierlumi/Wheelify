@@ -19,6 +19,12 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        binding.btnBack.setOnClickListener {
+            onBackPressedDispatcher
+                .onBackPressed()
+        }
+
+
         val id = intent.getIntExtra("id", 0)
         detailViewModel.getDetailNews(id)
         detailViewModel.isLoading.observe(this) { isLoading ->
