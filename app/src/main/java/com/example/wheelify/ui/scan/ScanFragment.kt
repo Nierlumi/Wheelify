@@ -1,5 +1,8 @@
 package com.example.wheelify.ui.scan
 
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -10,9 +13,12 @@ import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity.RESULT_OK
+import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.wheelify.databinding.FragmentScanBinding
+import com.example.wheelify.ui.scan.CameraActivity.Companion.CAMERAX_RESULT
 import com.yalantis.ucrop.UCrop
 import java.io.File
 
@@ -23,6 +29,23 @@ class ScanFragment : Fragment() {
 
     private val binding get() = _binding!!
     private var currentImageUri: Uri? = null
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                Toast.makeText(requireContext(), "Permission request granted", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(requireContext(), "Permission request denied", Toast.LENGTH_LONG).show()
+            }
+        }
+
+    private fun allPermissionsGranted() =
+        ContextCompat.checkSelfPermission(
+            requireContext(),
+            REQUIRED_PERMISSION
+        ) == PackageManager.PERMISSION_GRANTED
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +68,13 @@ class ScanFragment : Fragment() {
             showImage()
         }
 
+        if (!allPermissionsGranted()) {
+            requestPermissionLauncher.launch(REQUIRED_PERMISSION)
+        }
+
         binding.galleryButton.setOnClickListener { startGallery() }
+        binding.cameraxButton.setOnClickListener { startCameraX() }
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -94,6 +123,21 @@ class ScanFragment : Fragment() {
         uCropActivityResult.launch(cropIntent)
     }
 
+    private fun startCameraX() {
+        val intent = Intent(requireContext(), CameraActivity::class.java)
+        launcherIntentCameraX.launch(intent)
+    }
+
+    private val launcherIntentCameraX = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == CAMERAX_RESULT) {
+            currentImageUri = it.data?.getStringExtra(CameraActivity.EXTRA_CAMERAX_IMAGE)?.toUri()
+            startCrop(uri = currentImageUri!!)
+            showImage()
+        }
+    }
+
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
@@ -112,6 +156,7 @@ class ScanFragment : Fragment() {
 
     companion object{
         private const val KEY_IMAGE_URI = "key_image_uri"
+        private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
 
     }
 }
