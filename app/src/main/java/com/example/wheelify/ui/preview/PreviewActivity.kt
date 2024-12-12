@@ -23,14 +23,14 @@ class PreviewActivity : AppCompatActivity() {
             binding.resultImage.setImageURI(it)
         }
 
-//        val golongan = intent.getStringExtra("golongan")
-//        val confidence = intent.getDoubleExtra("confidence", 0.0)
+        val confidence = intent.getDoubleExtra("confidence", 0.0)
+
 
         val textDetected = intent.getStringExtra(EXTRA_RESULT)
         binding.resultText.text = if (textDetected.isNullOrEmpty()) {
             "No result available"
         } else {
-            textDetected
+            "${textDetected}\nConfidence: ${String.format("%.2f%%", confidence * 100)}"
         }
     }
 }

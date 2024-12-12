@@ -159,10 +159,14 @@ class ScanFragment : Fragment() {
 
             lifecycleScope.launch {
                 scanViewModel.uploadImage(multipartBody)
-                val intent = Intent(requireContext(), PreviewActivity::class.java)
-                intent.putExtra(PreviewActivity.EXTRA_IMG_URI, uri.toString())
-                intent.putExtra(PreviewActivity.EXTRA_RESULT, scanViewModel.scanResult.value?.jsonMemberClass)
-                startActivity(intent)
+
+                scanViewModel.scanResult.observe(viewLifecycleOwner) {
+                    val intent = Intent(requireContext(), PreviewActivity::class.java)
+                    intent.putExtra(PreviewActivity.EXTRA_IMG_URI, uri.toString())
+                    intent.putExtra(PreviewActivity.EXTRA_RESULT, scanViewModel.scanResult.value?.jsonMemberClass)
+                    intent.putExtra("confidence", scanViewModel.scanResult.value?.confidence)
+                    startActivity(intent)
+                }
             }
 
 
