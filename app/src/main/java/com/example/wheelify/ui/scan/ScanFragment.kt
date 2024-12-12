@@ -17,9 +17,15 @@ import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.wheelify.databinding.FragmentScanBinding
+import com.example.wheelify.ui.preview.PreviewActivity
 import com.example.wheelify.ui.scan.CameraActivity.Companion.CAMERAX_RESULT
 import com.yalantis.ucrop.UCrop
+import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
 @Suppress("DEPRECATION")
@@ -29,6 +35,7 @@ class ScanFragment : Fragment() {
 
     private val binding get() = _binding!!
     private var currentImageUri: Uri? = null
+    private lateinit var scanViewModel: ScanViewModel
 
     private val requestPermissionLauncher =
         registerForActivityResult(
@@ -52,8 +59,7 @@ class ScanFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val scanViewModel =
-            ViewModelProvider(this)[ScanViewModel::class.java]
+        scanViewModel = ViewModelProvider(this)[ScanViewModel::class.java]
 
         _binding = FragmentScanBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -74,6 +80,7 @@ class ScanFragment : Fragment() {
 
         binding.galleryButton.setOnClickListener { startGallery() }
         binding.cameraxButton.setOnClickListener { startCameraX() }
+        binding.analyzeButton.setOnClickListener { analyzeImage() }
 
     }
 
@@ -81,6 +88,7 @@ class ScanFragment : Fragment() {
         super.onSaveInstanceState(outState)
         currentImageUri?.let {
             outState.putParcelable(KEY_IMAGE_URI, it)
+            scanViewModel.currentImageUri = it
         }
     }
 
@@ -134,8 +142,32 @@ class ScanFragment : Fragment() {
         if (it.resultCode == CAMERAX_RESULT) {
             currentImageUri = it.data?.getStringExtra(CameraActivity.EXTRA_CAMERAX_IMAGE)?.toUri()
             startCrop(uri = currentImageUri!!)
+            scanViewModel.currentImageUri
             showImage()
         }
+    }
+
+    private fun analyzeImage() {
+        currentImageUri?.let { uri ->
+            val imageFile = uriToFile(uri, requireContext()).reduceFileImage()
+            val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
+            val multipartBody = MultipartBody.Part.createFormData(
+                "image",
+                imageFile.name,
+                requestImageFile
+            )
+
+            lifecycleScope.launch {
+                scanViewModel.uploadImage(multipartBody)
+                val intent = Intent(requireContext(), PreviewActivity::class.java)
+                intent.putExtra(PreviewActivity.EXTRA_IMG_URI, uri.toString())
+                intent.putExtra(PreviewActivity.EXTRA_RESULT, scanViewModel.scanResult.value?.jsonMemberClass)
+                startActivity(intent)
+            }
+
+
+
+        } ?: showToast("Error: Failed to upload image")
     }
 
     private fun showToast(message: String) {
