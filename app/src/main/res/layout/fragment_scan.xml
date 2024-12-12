@@ -1,81 +1,88 @@
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="100dp"
     android:background="?attr/colorPrimaryContainer"
     tools:context=".MainActivity">
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/progressIndicator"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/previewImageView"
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="35dp"
-        android:background="?attr/colorSurface"
-        app:layout_constraintTop_toBottomOf="@id/progressIndicator"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/galleryButton" />
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progressIndicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/cameraxButton"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/circle_button"
-        android:contentDescription="@string/title_scan"
-        android:drawableTop="@drawable/ic_scan_48dp"
-        app:backgroundTint="?attr/colorSecondary"
-        app:layout_constraintBottom_toTopOf="@id/galleryButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <ImageView
+            android:id="@+id/previewImageView"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="35dp"
+            android:background="?attr/colorSurface"
+            app:layout_constraintTop_toBottomOf="@id/progressIndicator"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/galleryButton" />
 
-    <Button
-        android:id="@+id/galleryButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/rounded_button"
-        android:text="@string/gallery"
-        android:textSize="16sp"
-        android:fontFamily="@font/poppins_bold"
-        app:backgroundTint="?attr/colorSecondary"
-        app:layout_constraintTop_toBottomOf="@id/previewImageView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/analyzeButton" />
+        <Button
+            android:id="@+id/cameraxButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/title_scan"
+            android:drawableTop="@drawable/ic_scan_48dp"
+            app:backgroundTint="?attr/colorSecondary"
+            app:layout_constraintBottom_toTopOf="@id/galleryButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/analyzeButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_button"
-        android:text="@string/analyze"
-        android:textSize="16sp"
-        android:fontFamily="@font/poppins_bold"
-        app:backgroundTint="?attr/colorSecondary"
-        app:layout_constraintTop_toBottomOf="@id/galleryButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/galleryButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/gallery"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_bold"
+            app:backgroundTint="?attr/colorSecondary"
+            app:layout_constraintTop_toBottomOf="@id/previewImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/analyzeButton" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/analyzeButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/analyze"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_bold"
+            app:backgroundTint="?attr/colorSecondary"
+            app:layout_constraintTop_toBottomOf="@id/galleryButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

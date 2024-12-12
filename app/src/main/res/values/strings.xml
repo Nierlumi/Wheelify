@@ -15,7 +15,7 @@
     <string name="get_done">Mari Kita Selesaikan</string>
     <string name="about_app">Wheelify adalah aplikasi untuk memindai kendaraan di jalan tol.</string>
     <string name="team_heading">Tim Pengembang:</string>
-    <string name="team_members">
+    <string name="team_members">\n
         Tsabitah Elysia Krismananda\n
         Dwi Rahayu Wulanida\n
         Masitha Mirzaky Firdaus\n
