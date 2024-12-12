@@ -15,7 +15,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var listNewsAdapter: ListNewsAdapter
-    private lateinit var popularNewsAdapter: PopularNewsAdapter
+
 
 
     override fun onCreateView(
