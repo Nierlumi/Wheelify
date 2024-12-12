@@ -10,8 +10,8 @@ interface ApiService {
     @GET("news")
     suspend fun getNews(
         //@Query("apiKey") apiKey: String,
-        @Query("country=us") country: String,
-        @Query("category=technology") category: String
+        @Query("country=general") country: String,
+        @Query("category=general") category: String
     ): NewsResponse
 
     @GET("news/{id}")

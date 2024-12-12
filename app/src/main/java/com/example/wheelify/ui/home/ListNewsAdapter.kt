@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.wheelify.R
 import com.example.wheelify.data.response.ArticlesItem
 import com.example.wheelify.databinding.ItemBannerBinding
 import com.example.wheelify.ui.detail.DetailActivity
@@ -29,6 +30,8 @@ class ListNewsAdapter : ListAdapter<ArticlesItem, NewsViewHolder>(DIFF_CALLBACK)
             binding.tvItemName.text = news.title
             Glide.with(binding.root.context)
                 .load(news.image)
+                .placeholder(R.drawable.ic_place_holder)
+                .error(R.drawable.ic_image_not_found)
                 .into(binding.imgItemPhoto)
 
             binding.root.setOnClickListener {
