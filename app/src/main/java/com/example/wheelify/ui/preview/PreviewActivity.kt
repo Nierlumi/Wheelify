@@ -2,6 +2,7 @@ package com.example.wheelify.ui.preview
 
 import android.net.Uri
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.example.wheelify.databinding.ActivityPreviewBinding
 
@@ -24,13 +25,18 @@ class PreviewActivity : AppCompatActivity() {
         }
 
         val confidence = intent.getDoubleExtra("confidence", 0.0)
-
-
         val textDetected = intent.getStringExtra(EXTRA_RESULT)
         binding.resultText.text = if (textDetected.isNullOrEmpty()) {
             "No result available"
         } else {
             "${textDetected}\nConfidence: ${String.format("%.2f%%", confidence * 100)}"
         }
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                finish()
+            }
+        })
     }
 }
+

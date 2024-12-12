@@ -158,19 +158,30 @@ class ScanFragment : Fragment() {
             )
 
             lifecycleScope.launch {
+                scanViewModel.resetScanResult()
+
                 scanViewModel.uploadImage(multipartBody)
 
-                scanViewModel.scanResult.observe(viewLifecycleOwner) {
-                    val intent = Intent(requireContext(), PreviewActivity::class.java)
-                    intent.putExtra(PreviewActivity.EXTRA_IMG_URI, uri.toString())
-                    intent.putExtra(PreviewActivity.EXTRA_RESULT, scanViewModel.scanResult.value?.jsonMemberClass)
-                    intent.putExtra("confidence", scanViewModel.scanResult.value?.confidence)
-                    startActivity(intent)
+                scanViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+                    binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
+                }
+
+                scanViewModel.scanResult.observe(viewLifecycleOwner) { result ->
+                    result?.let { it ->
+                        val resultUri = currentImageUri
+                        resultUri?.let { showImage(it) }
+
+                        val intent = Intent(requireContext(), PreviewActivity::class.java)
+                        intent.putExtra(PreviewActivity.EXTRA_IMG_URI, uri.toString())
+                        intent.putExtra(PreviewActivity.EXTRA_RESULT, it.jsonMemberClass)
+                        intent.putExtra("confidence", it.confidence)
+                        startActivity(intent)
+
+                        scanViewModel.resetScanResult()
+                        scanViewModel.scanResult.removeObservers(viewLifecycleOwner)
+                    }
                 }
             }
-
-
-
         } ?: showToast("Error: Failed to upload image")
     }
 
@@ -181,6 +192,7 @@ class ScanFragment : Fragment() {
     private fun showImage(uri: Uri? = currentImageUri) {
         uri?.let {
             Log.d("Image URI", "showImage: $it")
+            binding.previewImageView.setImageURI(null)
             binding.previewImageView.setImageURI(it)
         }
     }

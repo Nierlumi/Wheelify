@@ -13,8 +13,8 @@ import okhttp3.MultipartBody
 
 class ScanViewModel : ViewModel() {
 
-    private val _scanResult = MutableLiveData<FileUploadResponse>()
-    val scanResult: LiveData<FileUploadResponse> = _scanResult
+    private val _scanResult = MutableLiveData<FileUploadResponse?>()
+    val scanResult: LiveData<FileUploadResponse?> = _scanResult
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
@@ -28,10 +28,13 @@ class ScanViewModel : ViewModel() {
                 _scanResult.value = response
 
             } catch (e: Exception) {
-                _isLoading.value = false
                 Log.e("ScanViewModel", "Error: ${e.message}")
+            } finally {
+                _isLoading.value = false
             }
         }
-
+    }
+    fun resetScanResult() {
+        _scanResult.postValue(null)
     }
 }
