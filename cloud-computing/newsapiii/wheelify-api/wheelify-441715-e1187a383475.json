@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "wheelify-441715",
+  "private_key_id": "e1187a383475ff36beaee1f5725d470c3a89b478",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC1q6CXnnXEXzfj\nDQN1XM8DxJ+QS3Ss2R+Vsupxo8UhNGN7yI0NWrU4mdslB8m1YCKZ0eyQ6zUbgsLT\n3K0Zl5cx2QBPRt3CR3P65yU7vugm1deIg0e4Qc226SeunODnVfaDC9J+HdjPh8KB\noOtkVjCyueOSp4JOIH/cupuGJ/Dd+UdMOQxV3wsW7xpBf8rg3RMQwGhjcXpVokIF\nm/EmUH4VGKWjElRLHxSlG8bALMDwo3eut2mIGcYxL+ljt6w7hCqLPuezc/cifDtM\n9ZmcQQ5tA1xEO0Z84nELfGIff1U1ouq6JMfv/I7UCCUKigSLcAdaWg3mZQQkYOMT\n2oJ4wDjvAgMBAAECggEASgf7BN43ioLs4NMURjbAS35MMb51+Nvv8Y572DxPIDVb\nlv1GcZs1vy9/bKssSQO4hetUVkfrF99k6nYCeivamp8d77BmvP1mJ2gbNaoZq323\n+7LXvp/eJzwDBjZ6tfrDXmqqZ+dcy1E885syYWx4ItT6hnBJevHmePn4V6aeEq4L\nDaDcqp0eFu5nOeqz6z5vOJxSAh2isBhW7zF/5clWCVxJChdJGsW/t7A8i6YzI8+H\n+waz7XYtxKACzrfjQJuMd2dVS6GdZs24qv+sL/0+rkAUQVdfYPd0umwbT1cJlfeF\n1Svx/h1JW8hSgibKXOaFBHDubol3FdRT5gjKq9Xb2QKBgQDkq6h7AU4CmEnU2YB0\naZ2GinhLLl9yv4raV+AdNvhg8/onnAiVP77Kw8MS5REpMkFTbyG4mcVk6j4qmqNq\neGX07MoSfr7OYRzuMjAszZoT9l/qNBW/QiSdsLb3TrJjmXsZgQGZySfMZxulzGQz\nnnsJO4Fmu/KL4D8vLIqkdc/N6QKBgQDLYfdbX23e9trag2OhKG+o6EVbaM7Jt9Uv\n083KYoYEOorDdmpwoNK2hSqOCp3quhFzimO+0a1PFxXK+LGyevHMW+tWtXLyH1+B\n7xc8rkb7Hr6u53a3g5qWNqYrpYDlgNNiO8fItexoWSHn2f+aR9XOcky7ZY2ur58c\nKxhl0L5RFwKBgQCUhiZVVqCbsNxroqX7dsn5JCFD+6fFOUHv1Zncf+LN3koBxigR\nAKlku8gNkrkVv+2MSqdlZoM+q6KbO3ue4PqgHdiWMLqwA4Wt9O0zfItyIdlknlXt\ntwFfZvNAKF5XsM2y4AbxIyV1bxcXFm2S1YHmmj7PQo4kag/ADTcz4M2LWQKBgQCB\ngHXCprcNG94q+TJ9MYQ35v4SwF+7reR/Obx1u9pd4vDsmQAZiy3grlZ0b2oyRhxK\nl7n/jP9vtuFXhpePcB165KSrZ4ozhaqIz7baGpZz3BXKxPOg0pmiQFX6wL2cZTUz\n/aCuurg3kVm3ieXpVQhdFgap5HYc3xLPGtnEKvCkLQKBgG02lbyre+0eqs+WEk4y\nDy71Ot9Wk9Bsy/Ut6+CRb1WAcnThSTU/+m3/J+d36niemxaUaescyGg0a5X3b4/5\nkJ8YlzpaYhc40onmqVVEf70EU+yVUfG08htQtP53CFyjBa1d0wvnXmV2ieQM1tAg\n9uNVUnv096PG0nJfEHH8oBug\n-----END PRIVATE KEY-----\n",
+  "client_email": "wheelify-service@wheelify-441715.iam.gserviceaccount.com",
+  "client_id": "107910335312892084424",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/wheelify-service%40wheelify-441715.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

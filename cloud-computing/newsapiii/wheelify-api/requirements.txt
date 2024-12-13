@@ -1,0 +1,13 @@
+Flask
+tensorflow
+Flask
+tensorflow
+Pillow
+requests
+opencv-python
+scikit-learn
+scikit-image
+matplotlib
+pandas
+google-cloud-storage
+google-cloud-firestore
