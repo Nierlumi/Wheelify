@@ -87,6 +87,7 @@ Run the following command in your terminal, replacing `<path-to-image>` with the
 curl -X POST \
 -F "image=@<path-to-image>" \
 https://wheelify-model-api-2-199228555553.asia-southeast2.run.app/process
+```
 
 ## Technical Requirements
 
@@ -125,3 +126,24 @@ Ensure these libraries are installed in your Python environment:
 
    ```bash
    docker build -t wheelify-api .
+   ```
+3. **Push to Google Container Registry:**
+   ```bash
+   docker tag wheelify-api gcr.io/<PROJECT-ID>/wheelify-api:latest
+   docker push gcr.io/<PROJECT-ID>/wheelify-api:latest
+   ```
+4. **Deploy to Cloud Run**
+* Use the pushed image in the Cloud Run deployment process.
+* Allow unauthenticated access for public use.
+
+# Team Members
+
+| Name                          | ID           | Institution                                   |
+|-------------------------------|--------------|----------------------------------------------|
+| Tsabitah Elysia Krismananda   | M123B4KX4368 | Politeknik Elektronika Negeri Surabaya       |
+| Dwi Rahayu Wulanida           | M123B4KX1199 | Politeknik Elektronika Negeri Surabaya       |
+| Masitha Mirzaky Firdaus       | M123B4KX2425 | Politeknik Elektronika Negeri Surabaya       |
+| Iluh Meiranda Dyah Setyawati  | C296B4KX1954 | Universitas Pembangunan Nasional Veteran Jatim |
+| M. Saaduddin Abdillah Yusuf   | C296B4KY2361 | Universitas Pembangunan Nasional Veteran Jatim |
+| Jonathan Kaparang             | A552B4KY2090 | Universitas 45 Surabaya                      |
+| Afan Kristianto               | A552B4KY0148 | Universitas 45 Surabaya                      |
