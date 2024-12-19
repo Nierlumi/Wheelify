@@ -88,3 +88,40 @@ curl -X POST \
 -F "image=@<path-to-image>" \
 https://wheelify-model-api-2-199228555553.asia-southeast2.run.app/process
 
+## Technical Requirements
+
+### Libraries Used
+
+Ensure these libraries are installed in your Python environment:
+
+* Flask
+* tensorflow
+* Pillow
+* opencv-python
+* google-cloud-storage
+* google-cloud-firestore
+* scikit-learn
+* scikit-image
+* matplotlib
+* pandas
+
+### File Requirements
+
+* **Model file:** `saved_model` directory containing the TensorFlow model.
+* **Labels file:** `labels.npy` containing class labels.
+
+## Deployment Guide
+
+### Prerequisites
+
+* Google Cloud project with Cloud Run and Cloud Storage enabled.
+* Docker installed locally.
+
+### Steps
+
+1. **Create a Dockerfile:** Include instructions to build and run the API container.
+
+2. **Build Docker Image:**
+
+   ```bash
+   docker build -t wheelify-api .
